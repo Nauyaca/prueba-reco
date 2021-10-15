@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Image = require('../models/image')
+const Comment = require('../models/comment')
 
 router.get('/', (req, res) => {
   try{
