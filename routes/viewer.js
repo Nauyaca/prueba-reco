@@ -1,17 +1,19 @@
 const express = require('express')
 const router = express.Router()
-const Image = require('../models/image')
+const Viewer = require('../models/viewer')
 
 router.get('/', (req, res) => {
   try{
     res.json({
-        title: "Martin",
-        author: "Martin_105@hive.com",
-        description: "Lara"
+        name: 'Nahu',
+        lastName: 'Said',
+        userName: 'Nahuyaca123456',
+        email: 'moc_1324@hive.com'
     })
   }catch(error){
     console.log(`Error: ${error}`)
   }
 })
+
 
 module.exports = router
