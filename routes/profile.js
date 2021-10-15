@@ -1,15 +1,17 @@
 const express = require('express')
-
 const router = express.Router()
+const Profile = require('../models/profile')
 
 router.get('/', (req, res) => {
-  res.json([
-    {
-      nameUser: "Bobtoronja",
-      email: "pantalones_cuadrados@hive.com",
-      description: "Hi! This is my profile"
-    }
-  ])
+  try{
+    res.json({
+        author: 'Martin',
+        lastName: 'Lara',
+        email: 'Martin_105@hive.com'
+      })
+  }catch(error){
+    console.log(`Error: ${error}`)
+  }
 })
 
 module.exports = router
