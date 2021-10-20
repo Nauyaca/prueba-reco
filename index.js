@@ -2,7 +2,10 @@ const routerApi = require('./routes')
 const express = require('express')
 const app = express()
 const { config } = require('./config/index')
+const {checkApiKey} = require('./middleware/auth.handler')
+const passport = require('passport')
 
+app.use(passport.initialize)
 const port = config.port
 
 const mongoose = require('mongoose')
@@ -18,6 +21,7 @@ mongoose.connect(MONGO_URI,
 ).then(()=> console.log('Ya estamos conectados a THE HIVE')).catch(e=>console.log(e))
 
 
+require('./util/auth')
 
 routerApi(app)
 
@@ -25,7 +29,7 @@ app.get('/index', (req, res) => {
   res.send('Hi body! Welcome to the new experience')
 })
 
-app.get('/otra-ruta', (req, res) => {
+app.get('/otra-ruta', checkApiKey, (req, res) => {
   res.send('Hi! This is other route')
 })
 
